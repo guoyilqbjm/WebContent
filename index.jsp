@@ -25,10 +25,6 @@ body {
 </style>
 <body>
 
-
-
-
-
 <br><br><br>
 	<div class="row">
 		<div class="col-sm-4"></div>
