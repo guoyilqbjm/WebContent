@@ -193,6 +193,109 @@ button {
 			Copyright <span class="glyphicon glyphicon-copyright-mark"></span> 2015 by <strong>GuoGeTang</strong>. All Rights Reserved. 
 		</p>
 	</div>
+	
+	
+	
+	
+	<div class="modal fade" id="changeinfor" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+				<div class="modal-content">
+				
+				<div class="panel panel-info">
+				<div class="panel-heading">任务信息</div>
+				<form id="taskInfoForm" name="taskInfoForm" role="form" action="NewTaskServlet">
+					<div class="panel-body">
+						<h4>IF THIS</h4>
+						<div class="form-group" id="ifTimeDiv" style="display: none">
+							<label for="ifTime">在指定时间：</label> <input type="text"
+								class="form-control" id="ifTime">
+						</div>
+						<div class="form-group" id="ifEmailDiv" style="display: none">
+							<div class="form-group">
+								<label for="ifEmailAddr">当指定邮箱收到邮件：</label> <input type="text"
+									class="form-control" id="ifEmailAddr">
+							</div>
+							<div class="form-group">
+								<label for="ifEmailPwd">密码：</label> <input type="password"
+									class="form-control" id="ifEmailPwd">
+							</div>
+						</div>
+						<div class="form-group" id="ifWeiboDiv" style="display: none">
+							<label for="ifWeiboUsername">微博账号：</label> <input type="text"
+								class="form-control" id="ifWeiboUsername">
+							<label for="ifWeiboPwd">密码：</label> <input type="password"
+								class="form-control" id="ifWeiboPwd">
+							<div id="ifWeiboTimeDiv" style="display: none">
+								<label for="ifWeiboTime">在指定时间：</label> <input type="text"
+									class="form-control" id="ifWeiboTime">
+							</div>
+							<div id="ifWeiboContentDiv" style="display: none">
+								<label for="ifWeiboContent">指定内容：</label><br>
+								<textarea rows="3" style="width:100%;" id="ifWeiboContent"> </textarea>
+							</div>
+						</div>
+
+						<h4>
+							<br>THEN THAT
+						</h4>
+						<div class="form-group" id="thenEmailDiv" style="display: none">
+							<div class="form-group">
+								<label for="thenEmailAddr">发件人邮箱：</label> <input type="text"
+									class="form-control" id="thenEmailAddr">
+							</div>
+							<div class="form-group">
+								<label for="thenEmailPwd">密码：</label> <input type="password"
+									class="form-control" id="thenEmailPwd">
+							</div>
+							<div class="form-group">
+								<label for="thenEmailRecAddr">收件人邮箱：</label> <input type="text"
+									class="form-control" id="thenEmailRecAddr">
+							</div>
+							<div class="form-group">
+								<label for="thenEmailSubject">主题：</label> <input type="text"
+									class="form-control" id="thenEmailSubject">
+							</div>
+							<div class="form-group">
+								<label for="thenEmailContent">内容：</label>
+								<textarea class="form-control" rows="3" style="width:100%;"
+									id="thenEmailContent"></textarea>
+							</div>
+						</div>
+						<div class="form-group" id="thenWeiboDiv" style="display: none">
+							<div class="form-group">
+								<label for="thenWeiboUsername">微博账号：</label> <input type="text"
+									class="form-control" id="thenWeiboUsername">
+							</div>
+							<div class="form-group">
+								<label for="thenWeiboPwd">微博密码：</label> <input
+									type="password" class="form-control" id="thenWeiboPwd">
+							</div>
+							<div class="form-group">
+								<label for="thenWeiboContent">微博内容：</label> <br>
+								<textarea rows="3" style="width:100%;" id="thenWeiboContent"> </textarea>
+							</div>
+						</div>
+						<br>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" onclick="taskInfoFormat()">Submit</button>
+					</div>
+					<input type="hidden" name="tasktitle" id="tasktitle" value="">
+					<input type="hidden" name="thismode" id="thismode" value="">
+					<input type="hidden" name="thatmode" id="thatmode" value="">
+				</form>
+			</div>
+				
+				</div>
+	</div>
+	</div>
+	
+	
+	
+	
+	
+	
 </body>
 
 <script>
@@ -225,6 +328,7 @@ button {
 						alert("请先停止当前任务！");
 						return;
 					}
+
 					document.getElementById("taskmanage").action="";
 					alert("修改任务功能还没有实现");
 				}
@@ -240,6 +344,7 @@ button {
 			}
 		}
 	}
+	
 	$(document).ready(function() {
 
 		$("#ifTimeBtn").click(function() {
