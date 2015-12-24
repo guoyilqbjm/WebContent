@@ -583,56 +583,56 @@ h4 {
 
 		//处理选择任务详情信息，按下OK按钮之后在表单中显示所选。
 		$("#ifTimeOkBtn").click(function() {
-							ifmode=1;
-							document.getElementById("ifTimeDiv").style.display = "block";
-							document.getElementById("ifEmailDiv").style.display = "none";
-							document.getElementById("ifWeiboDiv").style.display = "none";
-							document.getElementById("ifTime").value = document.getElementById("ifTimeModalText").value;
-						});
+			ifmode=1;
+			document.getElementById("ifTimeDiv").style.display = "block";
+			document.getElementById("ifEmailDiv").style.display = "none";
+			document.getElementById("ifWeiboDiv").style.display = "none";
+			document.getElementById("ifTime").value = document.getElementById("ifTimeModalText").value;
+		});
 		$("#ifEmailOkBtn").click(function() {
-							ifmode=2;
-							document.getElementById("ifTimeDiv").style.display = "none";
-							document.getElementById("ifEmailDiv").style.display = "block";
-							document.getElementById("ifWeiboDiv").style.display = "none";
-							document.getElementById("ifEmailAddr").value=document.getElementById("ifEmailAddrText").value;
-							document.getElementById("ifEmailPwd").value = document.getElementById("ifEmailPwdText").value;
-						});
+			ifmode=2;
+			document.getElementById("ifTimeDiv").style.display = "none";
+			document.getElementById("ifEmailDiv").style.display = "block";
+			document.getElementById("ifWeiboDiv").style.display = "none";
+			document.getElementById("ifEmailAddr").value=document.getElementById("ifEmailAddrText").value;
+			document.getElementById("ifEmailPwd").value = document.getElementById("ifEmailPwdText").value;
+		});
 		$("#ifWeiboOkBtn").click(function() {
-							ifmode=3;
-							document.getElementById("ifTimeDiv").style.display = "none";
-							document.getElementById("ifEmailDiv").style.display = "none";
-							document.getElementById("ifWeiboDiv").style.display = "block";
-							document.getElementById("ifWeiboUsername").value=document.getElementById("ifWeiboIdText").value;
-							document.getElementById("ifWeiboPwd").value=document.getElementById("ifWeiboPwdText").value;
-							if(activeTab=="在指定时间内更新"){
-								document.getElementById("ifWeiboTimeDiv").style.display = "block";
-								document.getElementById("ifWeiboContentDiv").style.display = "none";
-								document.getElementById("ifWeiboTime").value=document.getElementById("ifWeiboTimeText").value;
-							}
-							else if(activeTab=="更新指定内容"){
-								document.getElementById("ifWeiboTimeDiv").style.display = "none";
-								document.getElementById("ifWeiboContentDiv").style.display = "block";
-								document.getElementById("ifWeiboContent").value=document.getElementById("ifweibocontent").value;
-							}
-						});
+			ifmode=3;
+			document.getElementById("ifTimeDiv").style.display = "none";
+			document.getElementById("ifEmailDiv").style.display = "none";
+			document.getElementById("ifWeiboDiv").style.display = "block";
+			document.getElementById("ifWeiboUsername").value=document.getElementById("ifWeiboIdText").value;
+			document.getElementById("ifWeiboPwd").value=document.getElementById("ifWeiboPwdText").value;
+			if(activeTab=="在指定时间内更新"){
+				document.getElementById("ifWeiboTimeDiv").style.display = "block";
+				document.getElementById("ifWeiboContentDiv").style.display = "none";
+				document.getElementById("ifWeiboTime").value=document.getElementById("ifWeiboTimeText").value;
+			}
+			else if(activeTab=="更新指定内容"){
+				document.getElementById("ifWeiboTimeDiv").style.display = "none";
+				document.getElementById("ifWeiboContentDiv").style.display = "block";
+				document.getElementById("ifWeiboContent").value=document.getElementById("ifweibocontent").value;
+			}
+		});
 		$("#thenEmailOkBtn").click(function() {
-							thenmode=1;
-							document.getElementById("thenEmailDiv").style.display = "block";
-							document.getElementById("thenWeiboDiv").style.display = "none";
-							document.getElementById("thenEmailAddr").value = document.getElementById("thenEmailSendAddrText").value;
-							document.getElementById("thenEmailPwd").value = document.getElementById("thenEmailSendPwdText").value;
-							document.getElementById("thenEmailRecAddr").value = document.getElementById("thenEmailReceiveAddrText").value;
-							document.getElementById("thenEmailSubject").value = document.getElementById("thenEmailtitleText").value;
-							document.getElementById("thenEmailContent").value = document.getElementById("thenEmailContentText").value;
-						});
+			thenmode=1;
+			document.getElementById("thenEmailDiv").style.display = "block";
+			document.getElementById("thenWeiboDiv").style.display = "none";
+			document.getElementById("thenEmailAddr").value = document.getElementById("thenEmailSendAddrText").value;
+			document.getElementById("thenEmailPwd").value = document.getElementById("thenEmailSendPwdText").value;
+			document.getElementById("thenEmailRecAddr").value = document.getElementById("thenEmailReceiveAddrText").value;
+			document.getElementById("thenEmailSubject").value = document.getElementById("thenEmailtitleText").value;
+			document.getElementById("thenEmailContent").value = document.getElementById("thenEmailContentText").value;
+		});
 		$("#thenWeiboOkBtn").click(function() {
-							thenmode=2;
-							document.getElementById("thenEmailDiv").style.display = "none";
-							document.getElementById("thenWeiboDiv").style.display = "block";
-							document.getElementById("thenWeiboUsername").value=document.getElementById("thenWeiboSendAddrText").value;
-							document.getElementById("thenWeiboPwd").value=document.getElementById("thenWeiboSendPwdText").value;
-							document.getElementById("thenWeiboContent").value=document.getElementById("thenWeiboContentText").value;
-						});
+			thenmode=2;
+			document.getElementById("thenEmailDiv").style.display = "none";
+			document.getElementById("thenWeiboDiv").style.display = "block";
+			document.getElementById("thenWeiboUsername").value=document.getElementById("thenWeiboSendAddrText").value;
+			document.getElementById("thenWeiboPwd").value=document.getElementById("thenWeiboSendPwdText").value;
+			document.getElementById("thenWeiboContent").value=document.getElementById("thenWeiboContentText").value;
+		});
 
 		$('[data-toggle="popover"]').popover();
 	});
