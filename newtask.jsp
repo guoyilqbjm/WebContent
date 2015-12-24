@@ -307,9 +307,6 @@ h4 {
 						class="glyphicon glyphicon-time"></span> Time</label> <input type="text"
 						class="form-control" id="ifTimeModalText"
 						placeholder="2015/12/25 23:23:00">
-						<input 
-onkeyup="value=value.replace(/[^\d]/g,'') 
-"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
