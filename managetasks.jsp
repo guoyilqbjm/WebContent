@@ -119,7 +119,8 @@ button {
 					%>
 						<tr>
 							<td>
-								<h3><%=title%></h3></td>
+								<a><%=title%></a></td>
+<!-- TODO 修改title的格式 -->
 							<td><span 
 								title="详细信息" data-container="body" data-html="true"
 								data-toggle="popover" data-placement="right" data-trigger="hover"
@@ -329,8 +330,8 @@ button {
 						return;
 					}
 					
-					alert("修改任务功能还没有实现");
-					$("editInfoModal").modal();
+					//alert("修改任务功能还没有实现");
+					$("#editInfoModal").modal();
 					document.getElementById("taskmanage").action="";
 					
 					
