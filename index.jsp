@@ -25,8 +25,6 @@ body {
 </style>
 <body>
 
-<!-- sufhkajsfnksjfnksfnksjf -->
-
 <br><br><br>
 	<div class="row">
 		<div class="col-sm-4"></div>
