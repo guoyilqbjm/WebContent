@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="database.*"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -269,8 +269,15 @@ h4 {
 								Balance&nbsp;&nbsp;<span class="glyphicon glyphicon-credit-card"></span>
 							</label>
 							<div class="col-sm-9">
+							<%
+							String username=(String)session.getAttribute("username");
+							if(username!=null && !username.equals("admin")){
+								String info=GetUserInformation.get(username);
+								String infos[]=info.split(",");
+							%>
 								<input type="text" class="form-control" id="balance"
-									placeholder="1000" disabled>
+									placeholder=<%=infos[1] %> disabled>
+							<%} %>
 							</div>
 						</div>
 						<div class="form-group">
