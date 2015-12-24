@@ -197,7 +197,7 @@ button {
 	
 	
 	
-	<div class="modal fade" id="changeinfor" role="dialog">
+	<div class="modal fade" id="editInfoModal" role="dialog">
 	<div class="modal-dialog">
 	<!-- Modal content-->
 				<div class="modal-content">
@@ -328,9 +328,12 @@ button {
 						alert("请先停止当前任务！");
 						return;
 					}
-
-					document.getElementById("taskmanage").action="";
+					
 					alert("修改任务功能还没有实现");
+					$("editInfoModal").modal();
+					document.getElementById("taskmanage").action="";
+					
+					
 				}
 				else{
 					if(prerow.cells[4].innerText=="running"){

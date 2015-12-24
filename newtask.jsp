@@ -444,7 +444,7 @@ h4 {
 						<label for="thenEmailtitleText"><span
 							class="glyphicon glyphicon-book"></span>Subject </label> <input
 							type="text" class="form-control" id="thenEmailtitleText"
-							placeholder="tittle"> <label for="thenEmailContentText"><span
+							placeholder="Title"> <label for="thenEmailContentText"><span
 							class="glyphicon glyphicon-comment"></span> Content</label> <br>
 						<textarea rows="3" style="width:100%;" id="thenEmailContentText"> </textarea>
 					</div>
