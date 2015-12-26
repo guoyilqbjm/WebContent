@@ -25,10 +25,6 @@ body {
 </style>
 <body>
 
-
-
-
-
 <br><br><br>
 	<div class="row">
 		<div class="col-sm-4"></div>
@@ -48,7 +44,7 @@ body {
 					</ul><br>
 					<div id="myTabContent" class="tab-content">
 					   <div class="tab-pane fade in active" id="login">
-					   		<form role="form" action="LoginInServlet">
+					   		<form role="form" action="LoginInServlet" method="post">
 								<div class="form-group">
 									<div class="input-group">
 										<div class="input-group-addon">
