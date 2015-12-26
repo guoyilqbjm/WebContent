@@ -15,6 +15,9 @@
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+
+
 <style>
 body {
 	margin-top: 80px;
@@ -305,10 +308,28 @@ button {
 		</div>
 	</div>
 	</div>
-	
+
 </body>
 
 <script>
+// 页面加载之始 将所有任务信息保存
+var taskInfoLists=new Array();
+<%	if(username!=null && !username.equals("admin")){
+		ArrayList<String> tasklists = GetTaskList.get(username);
+		for(int i=0;i<tasklists.size();++i){
+			String pretask=tasklists.get(i);
+%>
+taskInfoLists.push(<%=pretask%>);
+<%		}
+	}	%>
+</script>
+
+<script>
+	function fillEditTaskModal(title){
+		// TODO 遍历任务列表匹配title
+		
+	}
+	
 	function taskFunction(td){
 		var tasktable=document.getElementById("tasktable");
 		for(var i=1;i<tasktable.rows.length;++i){
@@ -337,6 +358,10 @@ button {
 						alert("请先停止当前任务！");
 						return;
 					}
+<<<<<<< HEAD
+=======
+					fillEditTaskModal(prerow.cells[0].innerText);
+>>>>>>> origin/master
 					$("#editInfoModal").modal();
 					document.getElementById("taskmanage").action="";
 				}
