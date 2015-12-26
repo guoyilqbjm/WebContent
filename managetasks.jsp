@@ -15,6 +15,9 @@
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+
+
 <style>
 body {
 	margin-top: 80px;
@@ -200,106 +203,132 @@ button {
 	<div class="modal fade" id="editInfoModal" role="dialog">
 	<div class="modal-dialog">
 	<!-- Modal content-->
-				<div class="modal-content">
-				
-				<div class="panel panel-info">
-				<div class="panel-heading">任务信息</div>
-				<form id="taskInfoForm" name="taskInfoForm" role="form" action="NewTaskServlet">
-					<div class="panel-body">
-						<h4>IF THIS</h4>
-						<div class="form-group" id="ifTimeDiv" style="display: none">
-							<label for="ifTime">在指定时间：</label> <input type="text"
-								class="form-control" id="ifTime">
-						</div>
-						<div class="form-group" id="ifEmailDiv" style="display: none">
-							<div class="form-group">
-								<label for="ifEmailAddr">当指定邮箱收到邮件：</label> <input type="text"
-									class="form-control" id="ifEmailAddr">
-							</div>
-							<div class="form-group">
-								<label for="ifEmailPwd">密码：</label> <input type="password"
-									class="form-control" id="ifEmailPwd">
-							</div>
-						</div>
-						<div class="form-group" id="ifWeiboDiv" style="display: none">
-							<label for="ifWeiboUsername">微博账号：</label> <input type="text"
-								class="form-control" id="ifWeiboUsername">
-							<label for="ifWeiboPwd">密码：</label> <input type="password"
-								class="form-control" id="ifWeiboPwd">
-							<div id="ifWeiboTimeDiv" style="display: none">
-								<label for="ifWeiboTime">在指定时间：</label> <input type="text"
-									class="form-control" id="ifWeiboTime">
-							</div>
-							<div id="ifWeiboContentDiv" style="display: none">
-								<label for="ifWeiboContent">指定内容：</label><br>
-								<textarea rows="3" style="width:100%;" id="ifWeiboContent"> </textarea>
-							</div>
-						</div>
-
-						<h4>
-							<br>THEN THAT
-						</h4>
-						<div class="form-group" id="thenEmailDiv" style="display: none">
-							<div class="form-group">
-								<label for="thenEmailAddr">发件人邮箱：</label> <input type="text"
-									class="form-control" id="thenEmailAddr">
-							</div>
-							<div class="form-group">
-								<label for="thenEmailPwd">密码：</label> <input type="password"
-									class="form-control" id="thenEmailPwd">
-							</div>
-							<div class="form-group">
-								<label for="thenEmailRecAddr">收件人邮箱：</label> <input type="text"
-									class="form-control" id="thenEmailRecAddr">
-							</div>
-							<div class="form-group">
-								<label for="thenEmailSubject">主题：</label> <input type="text"
-									class="form-control" id="thenEmailSubject">
-							</div>
-							<div class="form-group">
-								<label for="thenEmailContent">内容：</label>
-								<textarea class="form-control" rows="3" style="width:100%;"
-									id="thenEmailContent"></textarea>
-							</div>
-						</div>
-						<div class="form-group" id="thenWeiboDiv" style="display: none">
-							<div class="form-group">
-								<label for="thenWeiboUsername">微博账号：</label> <input type="text"
-									class="form-control" id="thenWeiboUsername">
-							</div>
-							<div class="form-group">
-								<label for="thenWeiboPwd">微博密码：</label> <input
-									type="password" class="form-control" id="thenWeiboPwd">
-							</div>
-							<div class="form-group">
-								<label for="thenWeiboContent">微博内容：</label> <br>
-								<textarea rows="3" style="width:100%;" id="thenWeiboContent"> </textarea>
-							</div>
-						</div>
-						<br>
-					</div>
-					<div class="panel-footer">
-						<button type="button" class="btn btn-default" onclick="taskInfoFormat()">Submit</button>
-					</div>
-					<input type="hidden" name="tasktitle" id="tasktitle" value="">
-					<input type="hidden" name="thismode" id="thismode" value="">
-					<input type="hidden" name="thatmode" id="thatmode" value="">
-				</form>
-			</div>
-				
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="modal-title">任务信息</h4>
 				</div>
+
+				<form id="taskInfoForm" name="taskInfoForm" role="form" action="NewTaskServlet">
+					<div class="modal-body">
+
+							<div class="form-group">
+								<label for="taskTitle">任务标题：</label> <input type="text"
+									class="form-control" id="taskTitle">
+							</div>
+							<h4>IF THIS</h4>
+							<div class="form-group" id="ifTimeDiv" style="display: none">
+								<label for="ifTime">在指定时间：</label> <input type="text"
+									class="form-control" id="ifTime">
+							</div>
+							<div class="form-group" id="ifEmailDiv" style="display: none">
+								<div class="form-group">
+									<label for="ifEmailAddr">当指定邮箱收到邮件：</label> <input type="text"
+										class="form-control" id="ifEmailAddr">
+								</div>
+								<div class="form-group">
+									<label for="ifEmailPwd">密码：</label> <input type="password"
+										class="form-control" id="ifEmailPwd">
+								</div>
+							</div>
+							<div class="form-group" id="ifWeiboDiv" style="display: none">
+								<label for="ifWeiboUsername">微博账号：</label> <input type="text"
+									class="form-control" id="ifWeiboUsername">
+								<label for="ifWeiboPwd">密码：</label> <input type="password"
+									class="form-control" id="ifWeiboPwd">
+								<div id="ifWeiboTimeDiv" style="display: none">
+									<label for="ifWeiboTime">在指定时间：</label> <input type="text"
+										class="form-control" id="ifWeiboTime">
+								</div>
+								<div id="ifWeiboContentDiv" style="display: none">
+									<label for="ifWeiboContent">指定内容：</label><br>
+									<textarea rows="3" style="width:100%;" id="ifWeiboContent"> </textarea>
+								</div>
+							</div>
+	
+							<h4>
+								<br>THEN THAT
+							</h4>
+							<div class="form-group" id="thenEmailDiv" style="display: none">
+								<div class="form-group">
+									<label for="thenEmailAddr">发件人邮箱：</label> <input type="text"
+										class="form-control" id="thenEmailAddr">
+								</div>
+								<div class="form-group">
+									<label for="thenEmailPwd">密码：</label> <input type="password"
+										class="form-control" id="thenEmailPwd">
+								</div>
+								<div class="form-group">
+									<label for="thenEmailRecAddr">收件人邮箱：</label> <input type="text"
+										class="form-control" id="thenEmailRecAddr">
+								</div>
+								<div class="form-group">
+									<label for="thenEmailSubject">主题：</label> <input type="text"
+										class="form-control" id="thenEmailSubject">
+								</div>
+								<div class="form-group">
+									<label for="thenEmailContent">内容：</label>
+									<textarea class="form-control" rows="3" style="width:100%;"
+										id="thenEmailContent"></textarea>
+								</div>
+							</div>
+							<div class="form-group" id="thenWeiboDiv" style="display: none">
+								<div class="form-group">
+									<label for="thenWeiboUsername">微博账号：</label> <input type="text"
+										class="form-control" id="thenWeiboUsername">
+								</div>
+								<div class="form-group">
+									<label for="thenWeiboPwd">微博密码：</label> <input
+										type="password" class="form-control" id="thenWeiboPwd">
+								</div>
+								<div class="form-group">
+									<label for="thenWeiboContent">微博内容：</label> <br>
+									<textarea rows="3" style="width:100%;" id="thenWeiboContent"> </textarea>
+								</div>
+							</div>
+							<br>
+						</div>
+	
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span>Close
+							</button>
+							<button type="button" class="btn btn-success" data-dismiss="modal"
+								id="ifTimeOkBtn">
+								<span class="glyphicon glyphicon-ok"></span> Save!
+							</button>
+						</div>
+						<input type="hidden" name="tasktitle" id="tasktitle" value="">
+						<input type="hidden" name="thismode" id="thismode" value="">
+						<input type="hidden" name="thatmode" id="thatmode" value="">
+					</form>
+					
+			</div>
+		</div>
 	</div>
 	</div>
-	
-	
-	
-	
-	
-	
+
 </body>
 
 <script>
+// 页面加载之始 将所有任务信息保存
+var taskInfoLists=new Array();
+<%	if(username!=null && !username.equals("admin")){
+		ArrayList<String> tasklists = GetTaskList.get(username);
+		for(int i=0;i<tasklists.size();++i){
+			String pretask=tasklists.get(i);
+%>
+taskInfoLists.push(<%=pretask%>);
+<%		}
+	}	%>
+</script>
 
+<script>
+	function fillEditTaskModal(title){
+		// TODO 遍历任务列表匹配title
+		
+	}
+	
 	function taskFunction(td){
 		var tasktable=document.getElementById("tasktable");
 		for(var i=1;i<tasktable.rows.length;++i){
@@ -328,12 +357,9 @@ button {
 						alert("请先停止当前任务！");
 						return;
 					}
-					
-					alert("修改任务功能还没有实现");
-					$("editInfoModal").modal();
+					fillEditTaskModal(prerow.cells[0].innerText);
+					$("#editInfoModal").modal();
 					document.getElementById("taskmanage").action="";
-					
-					
 				}
 				else{
 					if(prerow.cells[4].innerText=="running"){
@@ -349,9 +375,8 @@ button {
 	}
 	
 	$(document).ready(function() {
-
 		$("#ifTimeBtn").click(function() {
-			$("#ifTimeModal").modal();
+			$("#editInfoModal").modal();
 		});
 
 		$('[data-toggle="popover"]').popover();
