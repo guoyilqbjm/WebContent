@@ -58,7 +58,6 @@ body {
 								<thead>
 									<tr>
 										<th>时间</th>
-										<th>收件人</th>
 										<th>内容</th>
 									</tr>
 								</thead>
@@ -81,9 +80,6 @@ body {
 											<h3><%=time%></h3>
 										</td>
 										<td>
-											<h3><%=receive%></h3>
-										</td>
-										<td>
 											<h3><%=content%></h3>
 										</td>
 									</tr>
@@ -104,6 +100,7 @@ body {
 										<th>时间</th>
 										<th>收件人</th>
 										<th>内容</th>
+										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -130,6 +127,11 @@ body {
 										<td>
 											<h3><%=content%></h3>
 										</td>
+										<td><br>
+											<button type="button" class="btn btn-primary"
+												id=<%="操作" + i%> name="delete" onclick="taskFunction(this)">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button></td>
 									</tr>
 									<%
 										}
@@ -138,18 +140,36 @@ body {
 									%>
 								</tbody>
 							</table>
-					</div>
+						</div>
 
+					</div>
+				</div>
+
+				<form id="checkmessage" action="">
+					<input type="hidden" id="title" name="title" value="">
+				</form>
+
+				<div class="panel">
+					<p class="text-center">
+						Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
+						2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
+					</p>
 				</div>
 			</div>
-
-			<div class="panel">
-				<p class="text-center">
-					Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
-					2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
-				</p>
-			</div>
+			<div class="col-sm-2"></div>
 		</div>
-		<div class="col-sm-2"></div>
 	</div>
+</body>
+<script>
+	function taskFunction() {
+		for (var i = 1; i < tasktable.rows.length; ++i) {
+			var temp = "操作" + (i - 1);
+			if (temp == td.id) {
+				document.getElementById("checkmessage").action = "DeletePriMessageServlet";
+				document.getElementById("checkmessage").submit();
+			}
+		}
+	}
+</script>
+
 </html>
