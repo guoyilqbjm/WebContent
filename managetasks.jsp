@@ -57,6 +57,24 @@ button {
 </head>
 
 <body>
+<script>
+	<%	String un=(String)request.getSession().getAttribute("username");
+	if(un!=null && !un.equals("admin")){
+		ArrayList<String> tasklists = GetTaskList.get(un);
+		for(int i=0;i<tasklists.size();++i){
+			String pretask=tasklists.get(i);
+%>
+			var u=<%='"'+pretask+'"'%>;
+			alert(u);
+			taskInfoLists.push(<%=pretask%>);
+<%		}
+	}	%>
+
+alert(0);
+
+
+</script>
+
 	<% String username=(String)request.getSession().getAttribute("username"); %>
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -132,7 +150,7 @@ button {
 									data-content=<%='"'+"时间："+ thisModes[1]+'"'%>
 								<% }
 								else if(thisModes[0].equals("2")){//thismode为检测邮箱 %>
-									class="glyphicon glyphicon-enevlope logo-small"
+									class="glyphicon glyphicon-envelope logo-small"
 									data-content=<%='"'+"被检测邮箱："+ thisModes[1]+'"'%>
 								<%}
 								else if(thisModes[0].equals("3")) {//thismode为检测指定微博是否在指定时间内发布微博 %>
@@ -383,24 +401,14 @@ button {
 	
 </body>
 
-<script>
-// 页面加载之始 将所有任务信息保存
-var taskInfoLists=new Array();
-<%	if(username!=null && !username.equals("admin")){
-		ArrayList<String> tasklists = GetTaskList.get(username);
-		for(int i=0;i<tasklists.size();++i){
-			String pretask=tasklists.get(i);
-%>
-taskInfoLists.push(<%=pretask%>);
-<%		}
-	}	%>
-</script>
 
 <script>
-	function fillEditTaskModal(title){
-		// TODO 遍历任务列表匹配title
-		
+function fillEditTaskModal(title){
+	// TODO 遍历任务列表匹配title
+	for (x in taskInfoLists){
+		alert(taskInfoLists[x]);
 	}
+}
 	
 	function taskFunction(td){
 		var tasktable=document.getElementById("tasktable");
@@ -430,8 +438,8 @@ taskInfoLists.push(<%=pretask%>);
 						alert("请先停止当前任务！");
 						return;
 					}
-					fillEditTaskModal(prerow.cells[0].innerText);
 					$("#editInfoModal").modal();
+					//fillEditTaskModal(prerow.cells[0].innerText);
 					document.getElementById("taskmanage").action="";
 				}
 				else{
