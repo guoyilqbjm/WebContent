@@ -456,9 +456,10 @@ button {
 						alert("请先停止当前任务！");
 						return;
 					}
-					//alert("#editInfoModal"+prerow.cells[0].innerText);
-					$("#editInfoModal"+prerow.cells[0].innerText).modal();
-					document.getElementById("taskmanage").action="";
+					//alert(document.getElementById("title").value);
+					//$("#editInfoModal"+prerow.cells[0].innerText).modal();
+					document.getElementById("taskmanage").action="EditTask.jsp";
+					document.getElementById("taskmanage").submit();
 				}
 				else{
 					if(prerow.cells[4].innerText=="running"){
