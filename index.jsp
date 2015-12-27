@@ -45,7 +45,7 @@ body {
 					</ul><br>
 					<div id="myTabContent" class="tab-content">
 					   <div class="tab-pane fade in active" id="login">
-					   		<form role="form" action="LoginInServlet" method="post">
+					   		<form role="form" action="LoginInServlet">
 								<div class="form-group">
 									<div class="input-group">
 										<div class="input-group-addon">
