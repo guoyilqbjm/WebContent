@@ -57,23 +57,7 @@ button {
 </head>
 
 <body>
-<script>
-	<%	String un=(String)request.getSession().getAttribute("username");
-	if(un!=null && !un.equals("admin")){
-		ArrayList<String> tasklists = GetTaskList.get(un);
-		for(int i=0;i<tasklists.size();++i){
-			String pretask=tasklists.get(i);
-%>
-			var u=<%='"'+pretask+'"'%>;
-			alert(u);
-			taskInfoLists.push(<%=pretask%>);
-<%		}
-	}	%>
 
-alert(0);
-
-
-</script>
 
 	<% String username=(String)request.getSession().getAttribute("username"); %>
 	<!-- 导航栏 -->
@@ -178,16 +162,20 @@ alert(0);
 								>
 							</span></td>
 							<td><br>
-								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="play" onclick="taskFunction(this)">
+								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="play"
+								onclick="taskFunction(this)">
 									<span class="glyphicon glyphicon-play"></span>
 								</button>
-								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="pause" onclick="taskFunction(this)">	
+								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="pause"
+								onclick="taskFunction(this)">	
 									<span class="glyphicon glyphicon-pause"></span>
 								</button>
-								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="edit" onclick="taskFunction(this)">
+								<button type="button" class="btn btn-primary" id=<%="操作"+i %> name="edit" 
+								onclick="taskFunction(this)">
 									<span class="glyphicon glyphicon-edit"></span>
 								</button>
-								<button type="button" class="btn btn-danger" id=<%="操作"+i %> name="delete" onclick="taskFunction(this)">
+								<button type="button" class="btn btn-danger" id=<%="操作"+i %> name="delete" 
+								onclick="taskFunction(this)">
 									<span class="glyphicon glyphicon-trash"></span>
 								</button></td>
 							<td><h3><%=status %></h3>
@@ -215,12 +203,17 @@ alert(0);
 		</p>
 	</div>
 	
-	
-	
-	
-	<div class="modal fade" id="editInfoModal" role="dialog">
-	<div class="modal-dialog">
-	<!-- Modal content-->
+
+
+<!-- 修改信息Modal -->
+<% 
+	if(username != null) {
+	ArrayList<String> taskLists = GetTaskList.get(username);
+	for(int i=0;i<taskLists.size();i++){
+		String[] taskInfo=taskLists.get(i).split(";");
+%> 
+	<div class="modal fade" id=<%= "editInfoModal"+taskInfo[0] %> role="dialog">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">×</button>
@@ -232,81 +225,109 @@ alert(0);
 
 							<div class="form-group">
 								<label for="taskTitle">任务标题：</label> <input type="text"
-									class="form-control" id="taskTitle">
+									class="form-control" id="taskTitle" value="<%= taskInfo[0] %>">
 							</div>
 							<h4>IF THIS</h4>
+				<%
+					String thisModes[]=taskInfo[1].split(","),
+						thatModes[]=taskInfo[2].split(",");
+					if(thisModes[0].equals("1")) {
+				%>
 							<div class="form-group" id="ifTimeDiv" style="display: none">
 								<label for="ifTime">在指定时间：</label> <input type="text"
-									class="form-control" id="ifTime">
+									class="form-control" id="ifTime" value="<%= thisModes[1] %>>">
 							</div>
-							<div class="form-group" id="ifEmailDiv" style="display: none">
+				<%	}
+					else if(thisModes[0].equals("2")) {
+				%>
+							<div class="form-group" id="ifEmailDiv">
 								<div class="form-group">
 									<label for="ifEmailAddr">当指定邮箱收到邮件：</label> <input type="text"
-										class="form-control" id="ifEmailAddr">
+										class="form-control" id="ifEmailAddr" value="<%= thisModes[1] %>">
 								</div>
 								<div class="form-group">
 									<label for="ifEmailPwd">密码：</label> <input type="password"
-										class="form-control" id="ifEmailPwd">
+										class="form-control" id="ifEmailPwd" value="<%= thisModes[2] %>">
 								</div>
 							</div>
-							<div class="form-group" id="ifWeiboDiv" style="display: none">
-								<label for="ifWeiboUsername">微博账号：</label> <input type="text"
-									class="form-control" id="ifWeiboUsername">
-								<label for="ifWeiboPwd">密码：</label> <input type="password"
-									class="form-control" id="ifWeiboPwd">
-								<div id="ifWeiboTimeDiv" style="display: none">
-									<label for="ifWeiboTime">在指定时间：</label> <input type="text"
-										class="form-control" id="ifWeiboTime">
-								</div>
-								<div id="ifWeiboContentDiv" style="display: none">
-									<label for="ifWeiboContent">指定内容：</label><br>
-									<textarea rows="3" style="width:100%;" id="ifWeiboContent"> </textarea>
-								</div>
-							</div>
+				<%	}
+					else {
+				%>
+						<div class="form-group" id="ifWeiboDiv">
+						<label for="ifWeiboUsername">微博账号：</label> <input type="text"
+							class="form-control" id="ifWeiboUsername" value="<%= thisModes[1] %>">
+						<label for="ifWeiboPwd">密码：</label> <input type="password"
+							class="form-control" id="ifWeiboPwd" value="<%= thisModes[2] %>">
 	
-							<h4>
-								<br>THEN THAT
-							</h4>
-							<div class="form-group" id="thenEmailDiv" style="display: none">
+										
+				<%		if(thisModes[0].equals("3")) {
+				%>
+								<div id="ifWeiboTimeDiv">					
+									<label for="ifWeiboTime">在指定时间：</label> <input type="text"
+										class="form-control" id="ifWeiboTime" value="<%= thisModes[3] %>">
+								</div>				
+				<%		}
+						else if(thisModes[0].equals("4")) {
+				%>
+								<div id="ifWeiboContentDiv">
+									<label for="ifWeiboContent">指定内容：</label><br>
+									<textarea rows="3" style="width:100%;" id="ifWeiboContent" value="<%= thisModes[4] %>"> </textarea>
+								</div>						
+				<%		}
+				%>
+						</div>
+				<%	}
+				%>
+
+							<h4><br>THEN THAT</h4>
+				<%
+					if(thatModes[0].equals("1")) {
+				%>
+							<div class="form-group" id="thenEmailDiv">
 								<div class="form-group">
 									<label for="thenEmailAddr">发件人邮箱：</label> <input type="text"
-										class="form-control" id="thenEmailAddr">
+										class="form-control" id="thenEmailAddr" value="<%= thatModes[1] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenEmailPwd">密码：</label> <input type="password"
-										class="form-control" id="thenEmailPwd">
+										class="form-control" id="thenEmailPwd" value="<%= thatModes[2] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenEmailRecAddr">收件人邮箱：</label> <input type="text"
-										class="form-control" id="thenEmailRecAddr">
+										class="form-control" id="thenEmailRecAddr" value="<%= thatModes[3] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenEmailSubject">主题：</label> <input type="text"
-										class="form-control" id="thenEmailSubject">
+										class="form-control" id="thenEmailSubject" value="<%= thatModes[4] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenEmailContent">内容：</label>
 									<textarea class="form-control" rows="3" style="width:100%;"
-										id="thenEmailContent"></textarea>
+										id="thenEmailContent" value="<%= thatModes[5] %>"></textarea>
 								</div>
 							</div>
-							<div class="form-group" id="thenWeiboDiv" style="display: none">
+				<%	}
+					else if(thatModes[0].equals("2")) {
+				%>
+							<div class="form-group" id="thenWeiboDiv">
 								<div class="form-group">
 									<label for="thenWeiboUsername">微博账号：</label> <input type="text"
-										class="form-control" id="thenWeiboUsername">
+										class="form-control" id="thenWeiboUsername" value="<%= thatModes[1] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenWeiboPwd">微博密码：</label> <input
-										type="password" class="form-control" id="thenWeiboPwd">
+										type="password" class="form-control" id="thenWeiboPwd" value="<%= thatModes[2] %>">
 								</div>
 								<div class="form-group">
 									<label for="thenWeiboContent">微博内容：</label> <br>
-									<textarea rows="3" style="width:100%;" id="thenWeiboContent"> </textarea>
+									<textarea rows="3" style="width:100%;" id="thenWeiboContent" value="<%= thatModes[3] %>"> </textarea>
 								</div>
 							</div>
+				<%	}
+				%>
 							<br>
-						</div>
-	
+					</div>
+
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">
 								<span class="glyphicon glyphicon-remove"></span>Close
@@ -324,7 +345,11 @@ alert(0);
 			</div>
 		</div>
 	</div>
-	</div>
+	
+<%
+	}
+	}
+%>
 	
 	<!-- 个人信息  Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -401,14 +426,7 @@ alert(0);
 	
 </body>
 
-
 <script>
-function fillEditTaskModal(title){
-	// TODO 遍历任务列表匹配title
-	for (x in taskInfoLists){
-		alert(taskInfoLists[x]);
-	}
-}
 	
 	function taskFunction(td){
 		var tasktable=document.getElementById("tasktable");
@@ -438,8 +456,8 @@ function fillEditTaskModal(title){
 						alert("请先停止当前任务！");
 						return;
 					}
-					$("#editInfoModal").modal();
-					//fillEditTaskModal(prerow.cells[0].innerText);
+					//alert("#editInfoModal"+prerow.cells[0].innerText);
+					$("#editInfoModal"+prerow.cells[0].innerText).modal();
 					document.getElementById("taskmanage").action="";
 				}
 				else{
@@ -456,9 +474,6 @@ function fillEditTaskModal(title){
 	}
 	
 	$(document).ready(function() {
-		$("#ifTimeBtn").click(function() {
-			$("#editInfoModal").modal();
-		});
 		$("#viewInfoBtn").click(function() {
 			$("#myModal").modal();
 		});
