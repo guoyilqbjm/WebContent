@@ -89,14 +89,9 @@ button {
 			</div>
 		</div>
 	</nav>
-	<br>
-	<br>
 
 	
-	<!-- 操作任务时候进行提交的表单 -->
-	<form id="taskmanage" action="">
-		<input type="hidden" id="title" name="title" value="">
-	</form>
+
 
 	
 
@@ -120,17 +115,20 @@ button {
 
 							<div class="form-group">
 								<label for="taskTitle">任务标题：</label> <input type="text"
-									class="form-control" id="taskTitle" value="<%= taskInfo[0] %>">
+									class="form-control" id="taskTitle" value="<%= taskInfo[1] %>" disabled>
 							</div>
 							<h4>IF THIS</h4>
 				<%
 					String thisModes[]=taskInfo[2].split(","),
-						thatModes[]=taskInfo[3].split(",");
+						thatModes[]=taskInfo[3].split(",");%>
+					<input type="hidden" id="ifmode" value=<%=thisModes[0] %>>
+					<input type="hidden" id="thenmode" value=<%=thatModes[0] %>>
+				<% 
 					if(thisModes[0].equals("1")) {
 				%>
 							<div class="form-group" id="ifTimeDiv">
 								<label for="ifTime">在指定时间：</label> <input type="text"
-									class="form-control" id="ifTime" value="<%= thisModes[1] %>>">
+									class="form-control" id="ifTime" value="<%= thisModes[1] %>">
 							</div>
 				<%	}
 					else if(thisModes[0].equals("2")) {
@@ -228,13 +226,10 @@ button {
 								<span class="glyphicon glyphicon-remove"></span>Close
 							</button>
 							<button type="button" class="btn btn-success" data-dismiss="modal"
-								id="ifTimeOkBtn">
+								id="okButton" onclick="taskchange()">
 								<span class="glyphicon glyphicon-ok"></span> Save!
 							</button>
 						</div>
-						<input type="hidden" name="tasktitle" id="tasktitle" value="">
-						<input type="hidden" name="thismode" id="thismode" value="">
-						<input type="hidden" name="thatmode" id="thatmode" value="">
 					</form>
 <%
 	}
@@ -244,7 +239,13 @@ button {
 		<div class="col-sm-3"></div>
 	</div>
 	
-	
+		<!-- 操作任务时候进行提交的表单 -->
+	<form id="taskmanage" action="ChangeTaskInfoServlet" method="post">
+		<input type="hidden" id="title" name="title" value="">
+		<input type="hidden" id="thismode" name="thismode" value="">
+		<input type="hidden" id="thatmode" name="thatmode" value="">
+		
+	</form>
 	
 	<div class="panel" style="margin-top:50px;">
 		<p class="text-center">
@@ -255,10 +256,47 @@ button {
 </body>
 
 <script>
-function back(){
-	window.history.back();
-}
 
+	function back() {
+		window.history.back();
+	}
+	function taskchange() {
+		document.getElementById("title").value = document
+				.getElementById("taskTitle").value;
+		if (document.getElementById("ifmode").value == "1") {
+			document.getElementById("thismode").value = "1,"
+					+ document.getElementById("ifTime").value;
+		} else if (document.getElementById("ifmode").value == "2") {
+			document.getElementById("thismode").value = "2,"
+					+ document.getElementById("ifEmailAddr").value + ","
+					+ document.getElementById("ifEmailPwd").value;
+		} else if (document.getElementById("ifmode").value == "3") {
+			document.getElementById("thismode").value = "3,"
+					+ document.getElementById("ifWeiboUsername").value + ","
+					+ document.getElementById("ifWeiboPwd").value + ","
+					+ document.getElementById("ifWeiboTime").value;
+		} else {
+			document.getElementById("thismode").value = "4,"
+					+ document.getElementById("ifWeiboUsername").value + ","
+					+ document.getElementById("ifWeiboPwd").value + ","
+					+ document.getElementById("ifWeiboContent").value;
+		}
+		if (document.getElementById("thenmode").value == "1") {
+			document.getElementById("thatmode").value = "1,"
+					+ document.getElementById("thenEmailAddr").value + ","
+					+ document.getElementById("thenEmailPwd").value + ","
+					+ document.getElementById("thenEmailRecAddr").value + ","
+					+ document.getElementById("thenEmailSubject").value + ","
+					+ document.getElementById("thenEmailContent").value;
+		} else if (document.getElementById("thenmode").value == "2") {
+			document.getElementById("thatmode").value = "2,"
+					+ document.getElementById("thenWeiboUsername").value + ","
+					+ document.getElementById("thenWeiboPwd").value + ","
+					+ document.getElementById("thenWeiboContent").value;
+		}
+		
+		document.getElementById("taskmanage").submit();
+	}
 	$(document).ready(function() {
 		$("#viewInfoBtn").click(function() {
 			$("#myModal").modal();
