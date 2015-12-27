@@ -32,6 +32,21 @@ body {
 	<%
 		String username = (String) request.getSession().getAttribute("username");
 	%>
+	<!-- 导航栏 -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">IFTTT</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="newtask.jsp">新建任务</a></li>
+					<li class="active"><a href="managetasks.jsp">管理任务</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 	<br>
 	<br>
 	<br>

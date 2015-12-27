@@ -70,7 +70,7 @@ button {
 					<li class="active"><a href="#">管理任务</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-comment"></span>
+					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
 							消息</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"> <span
@@ -307,7 +307,80 @@ button {
 		</div>
 	</div>
 	</div>
+	
+	<!-- 个人信息  Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
 
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>
+						<span class="glyphicon glyphicon-cog"></span> 个人信息
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form" action="ChangeUserInfoServlet">
+						<div class="form-group">
+							<label for="usrname" class="col-sm-3 control-label">
+								Username&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="usrname"
+									placeholder=<%=request.getSession().getAttribute("username")%> disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="psw" class="col-sm-3 control-label">
+								Password&nbsp;&nbsp;<span class="glyphicon glyphicon-eye-open"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="psw" name="newPassword"
+									placeholder="Enter new password">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="balance" class="col-sm-3 control-label">
+								Balance&nbsp;&nbsp;<span class="glyphicon glyphicon-credit-card"></span>
+							</label>
+							<div class="col-sm-9">
+							<%
+							String username1=(String)session.getAttribute("username");
+							if(username1!=null && !username.equals("admin")){
+								String info=GetUserInformation.get(username1);
+								String infos[]=info.split(",");
+							%>
+								<input type="text" class="form-control" id="balance"
+									placeholder=<%=infos[1] %> disabled>
+							<%} %>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="balance" class="col-sm-3 control-label">
+								Deposit&nbsp;&nbsp;<span class="glyphicon glyphicon-credit-card"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="deposit" name="deposit"
+									value="0">
+							</div>
+						</div>
+						<br>
+						<button type="submit"
+							class="btn btn-default btn-success btn-lg btn-block">
+							<span class="glyphicon glyphicon-save"></span> 保存
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 
 <script>
@@ -377,6 +450,9 @@ taskInfoLists.push(<%=pretask%>);
 	$(document).ready(function() {
 		$("#ifTimeBtn").click(function() {
 			$("#editInfoModal").modal();
+		});
+		$("#viewInfoBtn").click(function() {
+			$("#myModal").modal();
 		});
 
 		$('[data-toggle="popover"]').popover();

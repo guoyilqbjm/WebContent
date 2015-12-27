@@ -63,7 +63,7 @@ h4 {
 					<li><a href="managetasks.jsp">管理任务</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-comment"></span>
+					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
 							消息</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"> <span
