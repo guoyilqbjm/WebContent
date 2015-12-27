@@ -42,6 +42,7 @@ body {
 					<li><a href="newtask.jsp">新建任务</a></li>
 					<li class="active"><a href="managetasks.jsp">管理任务</a></li>
 				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
 							消息</a></li>
@@ -160,7 +161,7 @@ body {
 										</td>
 										<td><br>
 											<button type="button" class="btn btn-primary"
-												id=<%="操作" + k%> name="delete" onclick="taskFunction(this)">
+											id=<%="操作" + k%> name="delete" onclick="taskFunction(this)">
 												<span class="glyphicon glyphicon-trash"></span>
 											</button></td>
 									</tr>
@@ -172,6 +173,7 @@ body {
 								</tbody>
 							</table>
 						</div>
+
 
 					</div>
 				</div>
@@ -259,8 +261,23 @@ body {
 					<button type="submit" class="btn btn-danger" data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> Close
 					</button>
+
+					</div>
+				</div>
+
+				<form id="checkmessage" action="">
+					<input type="hidden" id="title" name="title" value="">
+				</form>
+
+				<div class="panel">
+					<p class="text-center">
+						Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
+						2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
+					</p>
+
 				</div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 	</div>
 	
@@ -271,13 +288,13 @@ body {
 		for (var i = 1; i < messagetable.rows.length; ++i) {
 			var temp = "操作" + (i - 1);
 			if (temp == td.id) {
-				alert(temp);
 				document.getElementById("deleteTime").value=messagetable.rows[i].cells[0].innerText;
 				document.getElementById("checkmessage").action = "DeletePrivateMessageServlet";
 				document.getElementById("checkmessage").submit();
 			}
 		}
 	}
+
 	$(document).ready(function() {
 		$("#viewInfoBtn").click(function() {
 			$("#myModal").modal();
@@ -285,6 +302,7 @@ body {
 
 		$('[data-toggle="popover"]').popover();
 	});
+
 </script>
 
 </html>
