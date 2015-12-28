@@ -32,9 +32,12 @@ body {
 h2 {
 	font-size: 50px;
 	text-transform: uppercase;
-	color: #303030;
+	color: #FFFFFF;
 	font-weight: 600;
 	margin-bottom: 0px;
+}
+h3 {
+	color: #FFFFFF;
 }
 
 h4 {
@@ -49,11 +52,11 @@ h4 {
 
 </head>
 
-<body>
+<body background="image/skills.jpg">
 
 
 	<!-- 导航栏 -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">IFTTT</a>
@@ -64,18 +67,18 @@ h4 {
 					<li><a href="managetasks.jsp">管理任务</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
-							消息</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"> <span
-							class="glyphicon glyphicon-user"></span> 我 <span class="caret"></span>
-					</a>
+					<li class="dropdown"><a href="checkmessage.jsp">
+						<span class="glyphicon glyphicon-comment"></span>消息</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-user"></span>我 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a id="viewInfoBtn"><span
-									class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
-							<li><a href="LoginOutServlet"><span
-									class="glyphicon glyphicon-log-out"> 注销</span></a></li>
-						</ul></li>
+							<li><a href="#" id="viewInfoBtn">
+								<span class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
+
+							<li><a href="LoginOutServlet">
+								<span class="glyphicon glyphicon-log-out"> 注销</span></a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -90,24 +93,24 @@ h4 {
 				<div class="row slideanim">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-default btn-lg"
+						<button type="button" class="btn btn-default btn-lg" style="background: transparent;"
 							id="ifTimeBtn">
 							<span class="glyphicon glyphicon-time logo-small" id="myBtn"></span>
-							<h4>Time</h4>
+							<h3>Time</h3>
 						</button>
 					</div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-default btn-lg"
+						<button type="button" class="btn btn-default btn-lg" style="background: transparent;"
 							id="ifEmailBtn">
 							<span class="glyphicon glyphicon-envelope logo-small"></span>
-							<h4>Email</h4>
+							<h3>Email</h3>
 						</button>
 					</div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-default btn-lg"
+						<button type="button" class="btn btn-default btn-lg" style="background: transparent;"
 							id="ifWeiboBtn">
 							<span class="glyphicon glyphicon-bullhorn logo-small"></span>
-							<h4>Weibo</h4>
+							<h3>Weibo</h3>
 						</button>
 					</div>
 					<div class="col-sm-3"></div>
@@ -121,17 +124,17 @@ h4 {
 				<div class="row slideanim">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-default btn-lg"
+						<button type="button" class="btn btn-default btn-lg" style="background: transparent;"
 							id="thenEmailBtn">
 							<span class="glyphicon glyphicon-envelope logo-small"></span>
-							<h4>E-mail</h4>
+							<h3>E-mail</h3>
 						</button>
 					</div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-default btn-lg"
+						<button type="button" class="btn btn-default btn-lg" style="background: transparent;"
 							id="thenWeiboBtn">
 							<span class="glyphicon glyphicon-bullhorn logo-small"></span>
-							<h4>Weibo</h4>
+							<h3>Weibo</h3>
 						</button>
 					</div>
 					<div class="col-sm-4"></div>
@@ -222,7 +225,7 @@ h4 {
 						<br>
 					</div>
 					<div class="panel-footer">
-						<button type="submit" class="btn btn-default" onclick="taskInfoFormat()">Submit</button>
+						<button type="submit" class="btn btn-success" onclick="taskInfoFormat()">Submit&nbsp;>></button>
 					</div>
 					<input type="hidden" name="tasktitle" id="tasktitle" value="">
 					<input type="hidden" name="thismode" id="thismode" value="">
@@ -328,7 +331,7 @@ $('#successAlert').alert('close');
 					<label for="ifTimeModalText"><span
 						class="glyphicon glyphicon-time"></span> Time</label> <input type="text"
 						class="form-control" id="ifTimeModalText"
-						placeholder="2015/12/25 23:23:00">
+						placeholder="2015-12-25 23:23:00">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -361,7 +364,7 @@ $('#successAlert').alert('close');
 						for="ifEmailPwdText"><span
 						class="glyphicon glyphicon-eye-close"></span> Password</label> <input
 						type="password" class="form-control" id="ifEmailPwdText"
-						placeholder="********">
+						placeholder="请输入监听邮箱密码">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -399,14 +402,14 @@ $('#successAlert').alert('close');
 						for="ifWeiboPwdText"><span
 						class="glyphicon glyphicon-eye-close"></span>Weibo Password</label> <input
 						type="password" class="form-control" id="ifWeiboPwdText"
-						placeholder="********">
+						placeholder="请输入监听微博密码">
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade in active" id="login">
 							<div id="WeiboTimeDiv">
 								<label for="ifWeiboTimeText"><span
 									class="glyphicon glyphicon-time"></span> Time</label> <input
 									type="text" class="form-control" id="ifWeiboTimeText"
-									placeholder="23:55:00">
+									placeholder="2015-12-25 23:23:00">
 							</div>
 						</div>
 						<div class="tab-pane fade" id="register">
@@ -451,7 +454,7 @@ $('#successAlert').alert('close');
 							for="thenEmailSendPwdText"><span
 							class="glyphicon glyphicon-eye-close"></span>Sender Password</label> <input
 							type="password" class="form-control" id="thenEmailSendPwdText"
-							placeholder="********"> <label
+							placeholder="请输入发送邮箱密码"> <label
 							for="thenEmailReceiveAddrText"><span
 							class="glyphicon glyphicon-envelope"></span>Receiver Email
 							Address</label> <input type="text" class="form-control"
@@ -459,7 +462,7 @@ $('#successAlert').alert('close');
 						<label for="thenEmailtitleText"><span
 							class="glyphicon glyphicon-book"></span>Subject </label> <input
 							type="text" class="form-control" id="thenEmailtitleText"
-							placeholder="Title"> <label for="thenEmailContentText"><span
+							placeholder="请输入主题"> <label for="thenEmailContentText"><span
 							class="glyphicon glyphicon-comment"></span> Content</label> <br>
 						<textarea rows="3" style="width:100%;" id="thenEmailContentText"> </textarea>
 					</div>
@@ -494,7 +497,7 @@ $('#successAlert').alert('close');
 							for="thenWeiboSendPwdText"><span
 							class="glyphicon glyphicon-eye-close"></span>Weibo Password</label> <input
 							type="password" class="form-control" id="thenWeiboSendPwdText"
-							placeholder="********"> <label for="thenWeiboContentText"><span
+							placeholder="请输入密码"> <label for="thenWeiboContentText"><span
 							class="glyphicon glyphicon-comment"></span> Content</label> <br>
 						<textarea rows="3" style="width:100%;" id="thenWeiboContentText"> </textarea>
 					</div>
@@ -511,7 +514,7 @@ $('#successAlert').alert('close');
 			</div>
 		</div>
 
-		<div class="panel" style="margin-top: 50px;">
+		<div class="panel" style="margin-top: 50px; background: transparent;">
 			<p class="text-center">
 				Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
 				2015 by <strong>GuoGeTang</strong>. All Rights Reserved.

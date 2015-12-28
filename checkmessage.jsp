@@ -24,15 +24,16 @@ body {
 	line-height: 1.8;
 	color: #818181;
 }
+h3 {
+	font-size: 15px;
+}
 </style>
-<body>
-
-
+<body background="image/skills.jpg">
 	<%
 		String username = (String) request.getSession().getAttribute("username");
 	%>
 	<!-- 导航栏 -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">IFTTT</a>
@@ -40,23 +41,21 @@ body {
 			<div>
 				<ul class="nav navbar-nav">
 					<li><a href="newtask.jsp">新建任务</a></li>
-					<li class="active"><a href="managetasks.jsp">管理任务</a></li>
+					<li><a href="managetasks.jsp">管理任务</a></li>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
-							消息</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"> <span
-							class="glyphicon glyphicon-user"></span> 我 <span class="caret"></span>
-					</a>
+					<li class="dropdown"><a href="checkmessage.jsp">
+						<span class="glyphicon glyphicon-comment"></span>消息</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-user"></span>我 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a id="viewInfoBtn"><span
-									class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
-							<li><a href="LoginOutServlet"><span
-									class="glyphicon glyphicon-log-out"> 注销</span></a></li>
-						</ul></li>
+							<li><a href="#" id="viewInfoBtn">
+								<span class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
 
+							<li><a href="LoginOutServlet">
+								<span class="glyphicon glyphicon-log-out"> 注销</span></a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -66,29 +65,27 @@ body {
 	<br>
 	<br>
 	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8">
-			<div class="panel panel-info">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="panel panel-info" >
 				<div class="panel-heading">
 					<header class="text-center">
-						<div class="square"></div>
-						<h1>Message Check</h1>
+						<h2>消息</h2>
 					</header>
 				</div>
 				<div class="panel-body">
-					<br>
 					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a href="#publicdiv" data-toggle="tab">Public</a></li>
-						<li><a href="#privatediv" data-toggle="tab">Private</a></li>
+						<li class="active"><a href="#publicdiv" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;公告</a></li>
+						<li><a href="#privatediv" data-toggle="tab"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;&nbsp;私信</a></li>
 					</ul>
 					<br>
 					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in active" id="publicdiv">
+						<div class="tab-pane fade in active" id="publicdiv" >
 							<table id="publicmessagetable" class="table table-hover">
 								<thead>
 									<tr>
-										<th>时间</th>
-										<th>内容</th>
+										<th><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;时间</th>
+										<th><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;内容</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -107,10 +104,10 @@ body {
 									%>
 									<tr>
 										<td>
-											<h3><%=time%></h3>
+											<%=time%>
 										</td>
 										<td>
-											<h3><%=content%></h3>
+											<%=content%>
 										</td>
 									</tr>
 									<%
@@ -127,10 +124,10 @@ body {
 							<table id="privatemessagetable" class="table table-hover">
 								<thead>
 									<tr>
-										<th>时间</th>
-										<th>收件人</th>
-										<th>内容</th>
-										<th>操作</th>
+										<th><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;时间</th>
+										<th><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;收件人</th>
+										<th><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;内容</th>
+										<th><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -150,17 +147,11 @@ body {
 													++k;
 									%>
 									<tr>
+										<td><%=time%></td>
+										<td><%=receive%></td>
+										<td><%=content%></td>
 										<td>
-											<h3><%=time%></h3>
-										</td>
-										<td>
-											<h3><%=receive%></h3>
-										</td>
-										<td>
-											<h3><%=content%></h3>
-										</td>
-										<td><br>
-											<button type="button" class="btn btn-primary"
+											<button type="button" class="btn btn-danger btn-xs"
 											id=<%="操作" + k%> name="delete" onclick="taskFunction(this)">
 												<span class="glyphicon glyphicon-trash"></span>
 											</button></td>
@@ -182,16 +173,18 @@ body {
 					<input type="hidden" id="deleteTime" name="deleteTime" value="">
 				</form>
 
-				<div class="panel">
-					<p class="text-center">
-						Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
-						2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
-					</p>
-				</div>
+
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-3"></div>
 		</div>
 	</div>
+	
+		<div class="panel" style="margin-top: 50px; background: transparent;">
+			<p class="text-center">
+				Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
+				2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
+			</p>
+		</div>
 	
 	<!-- 个人信息  Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -269,17 +262,12 @@ body {
 					<input type="hidden" id="title" name="title" value="">
 				</form>
 
-				<div class="panel">
-					<p class="text-center">
-						Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
-						2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
-					</p>
 
-				</div>
+
+
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
-	</div>
 	
 </body>
 <script>

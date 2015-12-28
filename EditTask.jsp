@@ -56,12 +56,12 @@ button {
 
 </head>
 
-<body>
+<body background="image/skills.jpg">
 
 
 	<% String username=(String)request.getSession().getAttribute("username"); %>
 	<!-- 导航栏 -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">IFTTT</a>
@@ -69,33 +69,27 @@ button {
 			<div>
 				<ul class="nav navbar-nav">
 					<li><a href="newtask.jsp">新建任务</a></li>
-					<li class="active"><a href="#">管理任务</a></li>
+					<li><a href="managetasks.jsp">管理任务</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="checkmessage.jsp"><span class="glyphicon glyphicon-comment"></span>
-							消息</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"> <span
-							class="glyphicon glyphicon-user"></span> 我 <span class="caret"></span>
-					</a>
+					<li class="dropdown"><a href="checkmessage.jsp">
+						<span class="glyphicon glyphicon-comment"></span>消息</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-user"></span>我 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a id="viewInfoBtn"><span
-									class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
-							<li><a href="LoginOutServlet"><span
-									class="glyphicon glyphicon-log-out"> 注销</span></a></li>
-						</ul></li>
+							<li><a href="#" id="viewInfoBtn">
+								<span class="glyphicon glyphicon-edit"> 查看个人资料</span></a></li>
 
+							<li><a href="LoginOutServlet">
+								<span class="glyphicon glyphicon-log-out"> 注销</span></a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	
-
-
-	
-
-
 <!-- 修改信息Modal -->
 	<div class="row">
 		<div class="col-sm-3"></div>
@@ -247,12 +241,13 @@ button {
 		
 	</form>
 	
-	<div class="panel" style="margin-top:50px;">
-		<p class="text-center">
-			Copyright <span class="glyphicon glyphicon-copyright-mark"></span> 2015 by <strong>GuoGeTang</strong>. All Rights Reserved. 
-		</p>
-	</div>	
-	
+		<div class="panel" style="margin-top: 50px; background: transparent;">
+			<p class="text-center">
+				Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
+				2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
+			</p>
+			
+		</div>
 </body>
 
 <script>

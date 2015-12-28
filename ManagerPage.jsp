@@ -154,16 +154,16 @@
   <nav class="navbar navbar-default">
   	<div class="container-fluid">
     	<div class="navbar-header">
-      		<a class="navbar-brand">欢迎IFTTT管理员！</a>
+      		<a class="navbar-brand">IFTTT管理</a>
     	</div>
     	<div>
     		<ul class="nav navbar-nav">
-        		<li><a href="#" id="messageManage" onclick = "showMessageInfor()">消息管理</a></li>
-        		<li><a href="#" id="userManage" onclick="showUserInfor()">会员资料</a></li>
-        		<li><a href="#" id="userManage" onclick="showMessagePublish()">发布消息</a></li>
+        		<li><a href="#" id="messageManage" onclick = "showMessageInfor()"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;消息管理</a></li>
+        		<li><a href="#" id="userManage" onclick="showUserInfor()"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;会员资料</a></li>
+        		<li><a href="#" id="userManage" onclick="showMessagePublish()"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;发布消息</a></li>
       		</ul>
       		<ul class="nav navbar-nav navbar-right">
-        		<li><a href="LoginOutServlet"><span class="glyphicon glyphicon-remove"></span>退出</a></li>
+        		<li><a href="LoginOutServlet"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;注销</a></li>
       		</ul>
     	</div>
   	</div>
@@ -174,10 +174,10 @@
   	 <table class="table table-hover" id="userinformation">
     	<thead>
       		<tr>
-        		<th>用户名</th>
-        		<th>余额</th>
-        		<th>积分</th>
-        		<th>等级</th>
+        		<th><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户名</th>
+        		<th><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;余额</th>
+        		<th><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;积分</th>
+        		<th><span class="glyphicon glyphicon-certificate"></span>&nbsp;&nbsp;等级</th>
       		</tr>
     	</thead>
     	<tbody>
@@ -207,11 +207,11 @@
   	 <table id="messageTable" class="table table-hover">
     	<thead>
       		<tr>
-      			<th>时间</th>
-        		<th>类型</th>
-        		<th>接收对象</th>
-        		<th>内容</th>
-        		<th>操作</th>
+      			<th><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;时间</th>
+        		<th><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;类型</th>
+        		<th><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;接收对象</th>
+        		<th><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;内容</th>
+        		<th><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;操作</th>
       		</tr>
     	</thead>
     	<tbody>
@@ -226,8 +226,10 @@
         		<td><%=info[2]%></td>
         		<td><%=info[3]%></td>
         		<td>
-        			<input type="button" id=<%="修改"+i%> onclick="changeMessage(this)" value="修改">
-        			<input type="button" id=<%="删除"+i%> onclick="deleteMessage(this)" value="删除">
+        			<button type="button" class="btn btn-primary btn-sm" id=<%="修改"+i%> onclick="changeMessage(this)">
+        				<span class="glyphicon glyphicon-edit"></span></button>
+        			<button type="button" class="btn btn-danger btn-sm" id=<%="删除"+i%> onclick="deleteMessage(this)">
+        				<span class="glyphicon glyphicon-trash"></span></button>
         			<form id="deleteMessageForm" action="DeleteMessageServlet">
         				<input type="hidden" id="deleteTime" name="deleteTime" value="">
         			</form>
@@ -373,14 +375,23 @@
         	<input type="hidden" name="presentMessageTime" id="presentMessageTime" value="6">
         </div>
         <div class="modal-footer">
-        	<button type="submit" class="btn btm-default" onclick="changeMessageSubmit()">OK</button>
-         	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<button type="submit" class="btn btn-success" onclick="changeMessageSubmit()">
+        		<span class="glyphicon glyphicon-ok"></span> Save!</button>
+         	<button type="button" class="btn btn-danger" data-dismiss="modal">
+         		<span class="glyphicon glyphicon-remove"></span>Close</button>
          
         </div>
       </div>
     </div>
   </div>
    </form>
+   
+   		<div class="panel" style="margin-top: 50px; background: transparent;">
+			<p class="text-center">
+				Copyright <span class="glyphicon glyphicon-copyright-mark"></span>
+				2015 by <strong>GuoGeTang</strong>. All Rights Reserved.
+			</p>
+		</div>
   </body>
   
   <script>
