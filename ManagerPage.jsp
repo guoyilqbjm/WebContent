@@ -415,7 +415,6 @@
 		var ss="ss";
 		ss=document.getElementById(tr.cells[0].innerText);
 		ss="#消费"+tr.cells[0].innerText;
-		alert(ss);
 		$(ss).modal();
 	}
 	
