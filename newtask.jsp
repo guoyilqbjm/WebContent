@@ -51,6 +51,7 @@ h4 {
 
 <body>
 
+
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -79,7 +80,6 @@ h4 {
 			</div>
 		</div>
 	</nav>
-
 
 	<!-- Container (Task choose) -->
 	<div class="row">
@@ -140,6 +140,7 @@ h4 {
 			</div>
 		</div>
 		<div class="col-sm-3">
+
 			<div class="panel panel-info">
 				<div class="panel-heading">任务信息</div>
 				<form id="taskInfoForm" name="taskInfoForm" role="form" action="NewTaskServlet">
@@ -228,6 +229,13 @@ h4 {
 					<input type="hidden" name="thatmode" id="thatmode" value="">
 				</form>
 			</div>
+			  <div id="successAlert" class="alert alert-success fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+			  </div>
+<script>
+$('#successAlert').alert('close');
+</script>
 		</div>
 		<div class="col-sm-1"></div>
 	</div>
@@ -512,6 +520,7 @@ h4 {
 </body>
 
 <script>
+
 	var ifmode=0;
 	var thenmode=0;
 	var activeTab="在指定时间内更新";
@@ -526,6 +535,7 @@ h4 {
 	}
 
 	function taskInfoFormat() {
+		$('#successAlert').alert();
 		if(ifmode==1){
 			document.getElementById("thismode").value="1,"+document.getElementById("ifTime").value;
 		}

@@ -3,19 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <title>管理员界面</title>
+    <title>管理员</title>
 	
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="this is my page">
     <meta name="content-type" content="text/html; charset=UTF-8">
     
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
- <!--
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  -->
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
   <style>
   .logo-small {
@@ -239,45 +240,61 @@
   
   <!-- 发布消息 -->
   <div class="container" id="messagePublish" style="display:none">
-  	<h1>发布消息</h1>
+  	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+  	<div class="panel panel-info">
+  	  <div class="panel-heading">发布消息</div>
+  	  <div class="panel-body">
+<div class="row">
+	<div class="col-sm-6">
+  	  	<div class="dropdown">
+  	  		<label for="selectMessageType"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;消息类型：</label>
+    		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" id="selectMessageType">类型
+    			<span class="caret"></span></button>
+    		<ul class="dropdown-menu">
+	      		<li><a href="#" onclick="updateSelectType('selectMessageType',this)">公告</a></li>
+	      		<li><a href="#" onclick="updateSelectType('selectMessageType',this)">私信</a></li>
+    		</ul>
+  		</div>
+  	</div>
+  	<div class="col-sm-6">
+		<div class="dropdown">
+			<label for="selectMessageObject"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;发送给：</label>
+	   		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="selectMessageObject">接收对象
+	   			<span class="caret"></span></button>
+	   		<ul class="dropdown-menu" role="menu">
+	   			<% 
+	   			for(int i=0;i<allUsers.size();++i){
+	   				String info = GetUserInformation.get(allUsers.get(i));
+	   	    		String infor[] = info.split(",");
+	   			%>
+	      		<li><a href="#" onclick="updateSelectObject('selectMessageObject',this)"><%=infor[0]%></a></li>
+	      		<%}%>
+	   		</ul>
+		</div>
+	</div>
+</div>
+		
+	  	<br />
+	  	<form  id="postmessage" action="#">
+	  		<input type="hidden" id="newMessageType" name="newMessageType" value="">
+	  		<input type="hidden" id="newMessageReceiver" name="newMessageReceiver" value="">
+	  		<label for="newMessagecontent"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;内容：</label>
+	  		<textarea rows="5" style="width:100%;" id="newMessagecontent"></textarea>
+	  		<input type="hidden" id="newMessageContent" name="newMessageContent" value="guoyi">
+	  	</form>
+	  </div>
+	  <div class="panel-footer">
+	  	<button type="button" class="btn btn-success" onclick = "sendMessage()">
+	  		<span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;发送</button>
+	  </div>
+  	</div>
   	
-  	<div class="btn-group">
-   		<button type="button" class="btn btn-default" id="selectMessageType">类型</button>
-   		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-   			<span class="caret"></span>
-   		</button>
-   		<ul class="dropdown-menu" role="menu">
-      		<li><a href="#" onclick="updateSelectType('selectMessageType',this)">公告</a></li>
-      		<li><a href="#" onclick="updateSelectType('selectMessageType',this)">私信</a></li>
-   		</ul>
-	</div>
-	<br />
-	
-	<div class="btn-group">
-   		<button type="button" class="btn btn-default" id="selectMessageObject">接收对象</button>
-   		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-   			<span class="caret"></span>
-   		</button>
-   		<ul class="dropdown-menu" role="menu">
-   			<% 
-   			for(int i=0;i<allUsers.size();++i){
-   				String info = GetUserInformation.get(allUsers.get(i));
-   	    		String infor[] = info.split(",");
-   			%>
-      		<li><a href="#" onclick="updateSelectObject('selectMessageObject',this)"><%=infor[0]%></a></li>
-      		<%}%>
-   		</ul>
-	</div>
-  	<br />
-  	<form  id="postmessage" action="#">
-  		<input type="hidden" id="newMessageType" name="newMessageType" value="">
-  		<input type="hidden" id="newMessageReceiver" name="newMessageReceiver" value="">
-  		<textarea rows="15%" cols="60%" id="newMessagecontent"></textarea>
-  		<input type="hidden" id="newMessageContent" name="newMessageContent" value="guoyi">
-  		<input type="button" value="确定" onclick = "sendMessage()">
-  	</form>
-  	 
  </div>
+     <div class="col-sm-3"></div>
+  </div>
+  </div>
   
    <!-- 消费记录Modal -->
 	<% 
@@ -328,7 +345,8 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+
 
   <%
 		}
@@ -386,12 +404,9 @@
 		var ss="ss";
 		ss=document.getElementById(tr.cells[0].innerText);
 		ss="#消费"+tr.cells[0].innerText;
-		
+		alert(ss);
 		$(ss).modal();
 	}
 	
 	</script>
-  
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
 </html>
