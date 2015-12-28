@@ -263,7 +263,7 @@ $('#successAlert').alert('close');
 							</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" id="usrname"
-									placeholder=<%=request.getSession().getAttribute("username")%> disabled>
+									value=<%=request.getSession().getAttribute("username")%> disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -287,7 +287,26 @@ $('#successAlert').alert('close');
 								String infos[]=info.split(",");
 							%>
 								<input type="text" class="form-control" id="balance"
-									placeholder=<%=infos[1] %> disabled>
+									value=<%=infos[1] %> disabled>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="credits" class="col-sm-3 control-label">
+								Credits&nbsp;&nbsp;<span class="glyphicon glyphicon-heart"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="credits"
+									value=<%=infos[2] %> disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="ranks" class="col-sm-3 control-label">
+								Ranks&nbsp;&nbsp;<span class="glyphicon glyphicon-certificate"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="ranks"
+									value=<%=infos[3] %> disabled>
 							<%} %>
 							</div>
 						</div>

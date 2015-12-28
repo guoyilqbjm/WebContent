@@ -206,7 +206,7 @@ h3 {
 							</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" id="usrname"
-									placeholder=<%=request.getSession().getAttribute("username")%> disabled>
+									value=<%=request.getSession().getAttribute("username")%> disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -225,12 +225,31 @@ h3 {
 							<div class="col-sm-9">
 							<%
 							String username1=(String)session.getAttribute("username");
-							if(username1!=null && !username.equals("admin")){
+							if(username1!=null && !username1.equals("admin")){
 								String info=GetUserInformation.get(username1);
 								String infos[]=info.split(",");
 							%>
 								<input type="text" class="form-control" id="balance"
-									placeholder=<%=infos[1] %> disabled>
+									value=<%=infos[1] %> disabled>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="credits" class="col-sm-3 control-label">
+								Credits&nbsp;&nbsp;<span class="glyphicon glyphicon-heart"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="credits"
+									value=<%=infos[2] %> disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="ranks" class="col-sm-3 control-label">
+								Ranks&nbsp;&nbsp;<span class="glyphicon glyphicon-certificate"></span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="ranks"
+									value=<%=infos[3] %> disabled>
 							<%} %>
 							</div>
 						</div>
@@ -254,21 +273,15 @@ h3 {
 					<button type="submit" class="btn btn-danger" data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> Close
 					</button>
-
-					</div>
 				</div>
-
+			</div>
+		</div>
+	</div>
+		
+		
 				<form id="checkmessage" action="">
 					<input type="hidden" id="title" name="title" value="">
 				</form>
-
-
-
-
-			</div>
-			<div class="col-sm-2"></div>
-		</div>
-	
 </body>
 <script>
 	function taskFunction(td) {
