@@ -332,7 +332,11 @@
     							<tr>
     								<th><%=info[0]%></th>
     								<th><%=info[1]%></th>
-    								<th>描述信息</th>
+    								<%if(Integer.parseInt(info[1])>0){ %>
+    									<th>充值</th>
+    									<%}else{ %>
+    									<th>消费</th>
+    									<%} %>
     							</tr>
     				<%
     						}
