@@ -158,7 +158,7 @@ button {
 				%>
 								<div id="ifWeiboContentDiv">
 									<label for="ifWeiboContent">指定内容：</label><br>
-									<textarea rows="3" style="width:100%;" id="ifWeiboContent" value="<%= thisModes[4] %>"> </textarea>
+									<textarea rows="3" style="width:100%;" id="ifWeiboContent" value="<%= thisModes[3] %>"> </textarea>
 								</div>						
 				<%		}
 				%>

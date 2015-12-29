@@ -262,7 +262,8 @@ button {
 										
 				<%		if(thisModes[0].equals("3")) {
 				%>
-								<div id="ifWeiboTimeDiv">					
+								<div id="ifWeiboTimeDiv">	
+								<!-- 此处数组有可能越界 -->				
 									<label for="ifWeiboTime">在指定时间：</label> <input type="text"
 										class="form-control" id="ifWeiboTime" value="<%= thisModes[3] %>">
 								</div>				
@@ -271,7 +272,7 @@ button {
 				%>
 								<div id="ifWeiboContentDiv">
 									<label for="ifWeiboContent">指定内容：</label><br>
-									<textarea rows="3" style="width:100%;" id="ifWeiboContent" value="<%= thisModes[4] %>"> </textarea>
+									<textarea rows="3" style="width:100%;" id="ifWeiboContent" value="<%= thisModes[3] %>"> </textarea>
 								</div>						
 				<%		}
 				%>
